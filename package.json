@@ -1,0 +1,21 @@
+{
+  "name": "schoolmanagement",
+  "version": "1.0.0",
+  "description": "This is a Professional project",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "sourav",
+  "license": "MIT",
+  "dependencies": {
+    "alert-node": "^1.2.6",
+    "body-parser": "^1.19.0",
+    "cookie": "^0.4.0",
+    "cookie-parser": "^1.4.4",
+    "ejs": "^2.6.2",
+    "express": "^4.17.1",
+    "mysql": "^2.17.1"
+  }
+}

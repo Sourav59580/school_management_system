@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Admin</title>
+    <link rel="stylesheet" href="http://127.0.0.1:3000/css/admin.css">
+    <link rel="stylesheet" href="http://127.0.0.1:3000/css/flaticon.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animateCSS/1.2.2/jquery.animatecss.min.js">
+
+    <!--script cdn-->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+    </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+    </script>
+
+</head>
+
+<body>
+    <!--start nav bar coding-->
+
+    <nav class="navbar navbar-expand-lg top-nav fixed-top p-0"
+        style="height:70px;box-shadow: 0px 1px 10px 0px rgba(0, 0, 0, 0.1);z-index:1000;background-color: white;">
+        <div class="bg-warning pt-2 pl-4 text-light" style="height:70px;">
+            <a class="navbar-brand font-weight-bold" style="font-size:25px;"><i class="fa fa-android d-none"
+                    class="logo" alt="logo"></i> CODECORN</a>
+            <i class="fa fa-bars mr-1" data-target="#dashboard-page-one" data-toggle="collapse"
+                style="font-size:30px;cursor: pointer;"></i>
+        </div>
+        <i class=" navbar-toggler  fa fa-get-pocket" data-toggle="collapse" data-target="#phone-navbar"
+            style="font-size: 30px;"></i>
+        <!-- start mobile menu -->
+        <!-- <ul class="nav justify-content-end mobile-menu d-lg-none mr-2">
+            <li>
+                <a href="#"><i class="fa fa-bars" style="font-size:35px;"></i></a>
+            </li>
+        </ul> -->
+        <!-- end mobile menu -->
+        <div class="collapse navbar-collapse bg-white pl-4" id="phone-navbar">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#"><%= userData.username %></a>
+                    <span class="ml-5" style="position:absolute;margin-top:-8px;"">Admin</span>
+                    <ul class=" dropdown-menu pt-0" id="phone-dropdown">
+                        <i class="fa fa-caret-up"
+                            style="position: absolute; margin-top:-15px;color:#FFC107;margin-left:140px;font-size:20px;"></i>
+                <li class="dropdown-header bg-warning text-white">
+                    <h6>Sourav Santra</h6>
+                </li>
+
+                <a class="dropdown-item" data-toggle="modal" href="#profile"><i class="fa fa-user"> Profile</i></a>
+                <a class="dropdown-item" href="#"><i class="fa fa-gear fa-spin"> </i> Setting</a>
+                <form action="/logout" method="POST">
+                    <button for="" type="submit"
+                        style="margin: 0; padding: 0;border:none;background-color:white;outline:none;">
+                        <a class="dropdown-item"><i class="fa fa-power-off"></i> Logout</a>
+                    </button>
+                </form>
+            </ul>
+            </li>
+            <li class="nav-item">
+                <div style="width:60px;height:60px;" class="rounded-circle border" style="overflow:hidden;">
+                    <img src="http://127.0.0.1:3000/images/vo28ssjt25l21.jpg" width="100%" height="100%"
+                        class="rounded-circle">
+                </div>
+            </li>
+            <li class="nav-item"><a href="#clients" class="nav-link"></a></li>
+            <li class="nav-item mt-3 mr-4">
+                <i class="fa fa-bell-o animated pulse infinite" style="font-size:20px;cursor: pointer;color:red;"
+                    data-toggle="dropdown"></i>
+            </li>
+            <li class="nav-item mt-3 ">
+                <i class="fa fa-envelope-o" style="font-size:20px;cursor: pointer;color:#2AD7C5;"
+                    data-toggle="dropdown"></i>
+            </li>
+            <sup><span class="badge badge-danger text-light animated ultimate infinite pulse mt-3 mr-5">NEW</span></sup>
+            </ul>
+        </div>
+    </nav>
+
+    <!--page area start here-->
+    <!--start side navbar coding-->
+
+    <div class="container-fluid row p-0 m-0" style="height:1000px;">
+        <div class="col-2 mt-3 collapse show" id="dashboard-page-one">
+            <nav class="navbar mt-5">
+                <!-- Links -->
+                <ul class="nav nav-tabs border-0" id="side-navbar">
+                    <li class="nav-item">
+                        <a class="nav-link active border-0" data-toggle="tab" href="#admin"><i
+                                class="fa fa-dashboard mr-1" style="color: #FFC107;"></i> Dashboard</a>
+                        <!-- <div class="dropdown-menu p-0 m-0" style="background-color:#051F3E;  width:120px;">
+                            <a class="dropdown-item active" data-toggle="tab" href="#admin" style="color: #74869B;"><i
+                                    class="fa fa-angle-right mr-2"></i>Admin</a>
+                            <a class="dropdown-item" href="#" style="color: #74869B;"><i
+                                    class="fa fa-angle-right mr-2"></i>Students</a>
+                            <a class="dropdown-item" href="#" style="color: #74869B;"><i
+                                    class="fa fa-angle-right mr-2"></i>Teachers</a>
+                            <a class="dropdown-item" href="#" style="color: #74869B;"><i
+                                    class="fa fa-angle-right mr-2"></i>Parents</a>
+                        </div> -->
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link border-0" data-toggle="tab" href="#students"><i class="fa fa-user mr-2"
+                                style="color: #FFC107;"></i> Students</a>
+                        <!-- <div class="dropdown-menu p-0 m-0" style="background-color:#051F3E;  width:120px;">
+                                    <a class="dropdown-item" data-toggle="tab" href="#students" style="color: #74869B;"><i
+                                            class="fa fa-angle-right mr-2"></i>All students</a>
+                                    <a class="dropdown-item" href="#" style="color: #74869B;"><i
+                                            class="fa fa-angle-right mr-2"></i>CSE Deperment</a>
+                                    <a class="dropdown-item" href="#" style="color: #74869B;"><i
+                                            class="fa fa-angle-right mr-2"></i>ECE Deperment</a>
+                                    <a class="dropdown-item" href="#" style="color: #74869B;"><i
+                                            class="fa fa-angle-right mr-2"></i>CS Deperment</a>
+                                            <a class="dropdown-item" data-toggle="collapse" href="#admin" style="color: #74869B;"><i
+                                                class="fa fa-angle-right mr-2"></i>BBA Deperment</a>
+                                </div> -->
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link border-0" data-toggle="tab" href="#teachers"> <i class="fa fa-users mr-2"
+                                style="color: #FFC107;"></i> Teachers</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link border-0" data-toggle="tab" href="#parents"> <i class="fa fa-group mr-2"
+                                style="color: #FFC107;"></i> Parents</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link border-0" data-toggle="tab" href="#"> <i class="fa fa-money mr-2"
+                                style="color: #FFC107;"></i> Account</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link border-0" data-toggle="tab" href="#"> <i class="fa fa-newspaper-o mr-2"
+                                style="color: #FFC107;"></i>Notice</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link border-0" data-toggle="tab" href="#"> <i class="fa fa-pencil-square mr-2 "
+                                style="color: #FFC107;"></i> Class</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link border-0" data-toggle="tab" href="#"> <i class="fa fa-taxi mr-2"
+                                style="color: #FFC107;"></i> Transport</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link border-0" data-toggle="tab" href="#"> <i class="fa fa-institution mr-2 "
+                                style="color: #FFC107;"></i> Hostel</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link border-0" data-toggle="tab" href="#"> <i class="fa fa-book"
+                                style="color: #FFC107;"></i> Library</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link border-0" data-toggle="tab" href="#"> <i class="fa fa-leanpub mr-2"
+                                style="color: #FFC107;"></i> Subject</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link border-0" data-toggle="tab" href="#"> <i class="fa fa-file-text mr-2"
+                                style="color: #FFC107;"></i> Routine</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link border-0" data-toggle="tab" href="#"> <i class="fa fa-edit mr-2"
+                                style="color: #FFC107;"></i> Exam</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link border-0" data-toggle="tab" href="#"> <i class="fa fa-comments-o mr-2"
+                                style="color: #FFC107;"></i> Message</a>
+                    </li>
+                </ul>
+
+            </nav>
+
+
+
+        </div>
+        <div class="col-10" id="dashboard-page-one-container">
+            <!--start profile coding-->
+            <div class="modal animated pulse" id="profile">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header bg-white" style="color:red">
+                            <h4>EDIT PROFILE</h4>
+                            <i class="fa fa-close float-right" data-dismiss="modal"
+                                style="font-size:25px;cursor: pointer;"></i>
+                        </div>
+
+                        <div class="modal-body bg-white pt-0 ">
+                            <div class="row border mb-3">
+                                <div class="col-3 mb-3 pt-2">
+                                    <div style="width: 120px; height:120px;" class="border mb-4 rounded-circle">
+                                        <img src="http://127.0.0.1:3000/images/Nice-Best-Wallpaper.jpg" width="100%"
+                                            height="100%" class="rounded-circle">
+                                    </div>
+                                    <button class="btn btn-danger">Upload Picture</button>
+                                </div>
+                                <div class="col-9 mt-2">
+                                    <h2>System Administrator</h2>
+                                    <h4>Sourav Santra</h4>
+                                    <h6>Deperment : <span>Finance</span></h6>
+                                    <h6>Location : <span>Chandighar</span></h6>
+                                    <h6>Bio : <span>Empty</span></h6>
+                                </div>
+                            </div>
+                            <div class="bg-primary text-light p-2 my-2 rounded ">
+                                <i class="fa fa-info-circle float-left mr-2" style="font-size:25px;"></i>
+                                <h5>About</h5>
+                            </div>
+                            <form action="" method="POST">
+                                <div class="form-group">
+                                    <label for="username">User Name:</label>
+                                    <input type="text" class="form-control border-bottom border-top-0 border-left-0 border-right-0 focus-none" value="Sourav Santra" id="name" name="username">
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Email address:</label>
+                                    <input type="email" class="form-control border-bottom border-top-0 border-left-0 border-right-0 focus-none" value="souravsantra59680@gmail.com" id="email">
+                                </div>
+
+
+                            </form>
+                        </div>
+
+                        <div class="modal-footer bg-white" style="color:red">
+                            <button class="btn float-right border-0 btn-primary" data-dismiss="modal">CLOSE</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!--end profile coding-->
+            <div class="tab-content">
+                <!--start admin coding-->
+                <div id="admin" class="tab-pane active"">
+                    <h5 class=" ml-4">Admin</h5>
+                    <p class="ml-4">Home <span style="color:#FFC107;"> > Admin</span></p>
+                    <div class="d-flex flex-column flex-lg-row justify-content-around mb-4">
+                        <div class="bg-white mb-4 mb-lg-0"
+                            style="width:210px;height:130px;background-color: white;
+                            box-shadow: 0 16px 30px -12px rgba(0,0,0,.2), 0 4px 25px 0 rgba(0,0,0,.12), 0 8px 10px -5px rgba(0,0,0,.2);">
+
+                            <img src="http://127.0.0.1:3000/images/studentslogo.png" width="85px" height="85px;"
+                                class="ml-4 mt-4">
+                            <div class="float-right mr-4 mt-5">
+                                <h6 style="color:gray;">Students</h6>
+                                <h5>160000</h5>
+                            </div>
+                        </div>
+                        <div class="bg-white mb-4 mb-lg-0"
+                            style="width:210px;height:120px; background-color: white;
+                            box-shadow: 0 16px 30px -12px rgba(0,0,0,.2), 0 4px 25px 0 rgba(0,0,0,.12), 0 8px 10px -5px rgba(0,0,0,.2);">
+                            <img src="http://127.0.0.1:3000/images/teachers.jpg" width="85px" height="85px;"
+                                class="ml-4 mt-4">
+                            <div class="float-right mr-4 mt-5">
+                                <h6 style="color:gray;">Teachers</h6>
+                                <h5>1500</h5>
+                            </div>
+                        </div>
+                        <div class="bg-white mb-4 mb-lg-0"
+                            style="width:210px;height:120px;background-color: white;
+                            box-shadow: 0 16px 30px -12px rgba(0,0,0,.2), 0 4px 25px 0 rgba(0,0,0,.12), 0 8px 10px -5px rgba(0,0,0,.2);">
+                            <img src="http://127.0.0.1:3000/images/parents.jpg" width="85px" height="85px;"
+                                class="ml-4 mt-4">
+                            <div class="float-right mr-4 mt-5">
+                                <h6 style="color:gray;">Parentss</h6>
+                                <h5>56000</h5>
+                            </div>
+                        </div>
+                        <div class="bg-white mb-4 mb-lg-0"
+                            style="width:210px;height:120px;background-color: white;
+                            box-shadow: 0 16px 30px -12px rgba(0,0,0,.2), 0 4px 25px 0 rgba(0,0,0,.12), 0 8px 10px -5px rgba(0,0,0,.2);">
+                            <img src="http://127.0.0.1:3000/images/money.png" width="85px" height="85px;"
+                                class="ml-4 mt-4">
+                            <div class="float-right mr-4 mt-5">
+                                <h6 style="color:gray;">Earnings</h6>
+                                <h5>160000</h5>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--start notice board coding-->
+                    <div class=" d-flex flex-column flex-lg-row justify-content-around mb-4">
+                        <div class="bg-white"
+                            style="width:485px;height:400px;box-shadow:rgba(0px,0px 10px #ddd);overflow: scroll;overflow-x: hidden">
+                            <div class="bg-white sticky-top p-3"
+                                style="height:60px;color: red;box-shadow: 0px 1px 10px 0px rgba(0, 0, 0, 0.1);z-index: inherit;">
+                                <h4>NOTICE BOARD <i class="fa fa-list-ul float-right dropdown" data-toggle="dropdown"
+                                        style="cursor:pointer;">
+                                        <div class="dropdown-menu border-0"
+                                            style="box-shadow:0 16px 30px -12px rgba(0,0,0,.2), 0 4px 25px 0 rgba(0,0,0,.12), 0 8px 10px -5px rgba(0,0,0,.2); ">
+                                            <a class="dropdown-item" href="#"><i class="fa fa-upload mr-3"
+                                                    style="color: rgb(30, 74, 82);"></i>Upload</a>
+                                            <a class="dropdown-item" href="#"><i class="fa fa-cogs mr-3"
+                                                    style="color: #00C853;"></i>Edit</a>
+                                            <a class="dropdown-item" href="#"><i class="fa fa-close mr-3"
+                                                    style="color: red;"></i>Delete</a>
+                                            <a class="dropdown-item" href="#"><i class="fa fa-repeat mr-3"
+                                                    style="color: orange;"></i>Refresh</a>
+                                        </div>
+                                    </i></h4>
+
+                            </div>
+                            <div class="mt-3">
+                                <div class="text-justify px-4">
+                                    <div
+                                        style="width:120px;height:40px;border-radius:30px;background-color:greenyellow;color:white;text-align: center;padding:8px;">
+                                        <h5>Algorithm</h5>
+                                    </div>
+                                    <h6>They will be responsible to plan, coordinate and conduct various events in the
+                                        university. Coordinators will give a brief presentation covering all aspects
+                                        well before the event is scheduled.
+
+                                    </h6>
+                                </div>
+                                <hr>
+                                <div class="text-justify px-4">
+                                    <div
+                                        style="width:120px;height:40px;border-radius:30px;background-color:red;color:white;text-align: center;padding:8px;">
+                                        <h5>Algorithm</h5>
+                                    </div>
+                                    <h6>They will be responsible to plan, coordinate and conduct various events in the
+                                        university. Coordinators will give a brief presentation covering all aspects
+                                        well before the event is scheduled.
+
+                                    </h6>
+                                </div>
+                                <hr>
+                                <div class="text-justify px-4">
+                                    <div
+                                        style="width:120px;height:40px;border-radius:30px;background-color:rgb(18, 206, 240);color:white;text-align: center;padding:8px;">
+                                        <h5>Algorithm</h5>
+                                    </div>
+                                    <h6>They will be responsible to plan, coordinate and conduct various events in the
+                                        university. Coordinators will give a brief presentation covering all aspects
+                                        well before the event is scheduled.
+
+                                    </h6>
+                                </div>
+                                <hr>
+
+
+
+
+
+
+
+
+                            </div>
+                        </div>
+                        <div class="bg-white" style="width:485px;height:400px;box-shadow:rgba(0px,0px 10px #ddd)">
+                            <div class="bg-white sticky-top p-3"
+                                style="height:60px;color: red;box-shadow: 0px 1px 10px 0px rgba(0, 0, 0, 0.1);z-index: inherit;">
+                                <h4>ACADEMIC CALENDAR</h4>
+                            </div>
+
+
+                        </div>
+                    </div>
+                    <!--end notice board coding-->
+                    <!--start social media coding-->
+                    <div class="d-flex flex-column flex-lg-row justify-content-around">
+                        <div class="mb-lg-0 p-3 text-white"
+                            style="width:230px;height:140px;box-shadow:rgba(red, green, blue, alpha); background-color: #485C8F;">
+                            <i class="fa fa-facebook  p-2" style="font-size:30px"></i><span>Like us on facebook</span>
+                            <h3 class="text-center">30,000</h3>
+                        </div>
+                        <div class=" mb-lg-0 p-3 text-white"
+                            style="width:230px;height:140px; box-shadow:rgba(0px,0px 10px #ddd);background-color: #45A0F0;">
+                            <i class="fa fa-twitter  p-2" style="font-size:30px"></i><span>Follow us on twitter</span>
+                            <h3 class="text-center">1,10,000</h3>
+                        </div>
+
+                        <div class=" mb-lg-0 p-3 text-white"
+                            style="width:230px;height:140px;box-shadow:rgba(0px,0px 10px #ddd);background-color: #DB1A1A;">
+                            <i class="fa fa-google-plus  p-2" style="font-size:30px"></i><span>Like us on
+                                facebook</span>
+                            <h3 class="text-center">30,000</h3>
+                        </div>
+
+                        <div class="mb-lg-0 p-3 text-white"
+                            style="width:230px;height:140px;box-shadow:rgba(0px,0px 10px #ddd);background-color: #1559A7;">
+                            <i class="fa fa-linkedin  p-2" style="font-size:30px"></i><span>Like us on facebook</span>
+                            <h3 class="text-center">30,000</h3>
+                        </div>
+
+                    </div>
+                    <!--end social media coding-->
+                    <h4 class="text-center mt-5"
+                        style="font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Powered by
+                        sourav</h4>
+                </div>
+                <!--end admin coding-->
+                <!--start students coding-->
+                <div id="students" class="tab-pane">
+                    <h5 class=" ml-3">Students</h5>
+                    <p class="ml-3 mb-4">Home <span style="color:#FFC107;"> > Students</span></p>
+                    <div class="container p-0" id="students-container">
+                        <div class="bg-white sticky-top p-3"
+                            style="height:60px;color: red;box-shadow: 0px 1px 10px 0px rgba(0, 0, 0, 0.1);z-index: inherit;">
+                            <h4>All Students Data</h4>
+                        </div>
+                        <table>
+                            <tr>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                        </table>
+
+                    </div>
+
+
+                </div>
+                <!--end students coding-->
+                <!--start teachers coding-->
+                <div id="teachers" class="tab-pane">
+                    <h5 class=" ml-3">Teachers</h5>
+                    <p class="ml-3 mb-4">Home <span style="color:#FFC107;"> > Teachers</span></p>
+                    <div class="container p-0" id="students-container">
+                        <div class="bg-white sticky-top p-3"
+                            style="height:60px;color: red;box-shadow: 0px 1px 10px 0px rgba(0, 0, 0, 0.1);z-index: inherit;">
+                            <h4>All Teachers Data</h4>
+                        </div>
+                        <table>
+                            <tr>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                        </table>
+
+                    </div>
+
+
+                </div>
+
+
+                <!--end teachers coding-->
+                <!--start parentss coding-->
+                <div id="parents" class="tab-pane">
+                    <h5 class=" ml-3">Parents</h5>
+                    <p class="ml-3 mb-4">Home <span style="color:#FFC107;"> > Parents</span></p>
+                    <div class="container p-0" id="students-container">
+                        <div class="bg-white sticky-top p-3"
+                            style="height:60px;color: red;box-shadow: 0px 1px 10px 0px rgba(0, 0, 0, 0.1);z-index: inherit;">
+                            <h4>All Parents Data</h4>
+                        </div>
+                        <table>
+                            <tr>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                        </table>
+
+                    </div>
+
+
+                </div>
+
+
+                <!--end parents coding-->
+                <div id="profile" class="tab-pane">
+                    <p>
+                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
+                        the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley
+                        of type and scrambled it to make a type specimen book. It has survived not only five centuries,
+                        but also the leap into elec
+
+                    </p>
+
+
+                </div>
+
+
+
+
+
+
+                <!--start profile coding-->
+
+
+
+
+                <!--end profile coding-->
+
+
+
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>

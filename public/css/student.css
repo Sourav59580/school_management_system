@@ -1,0 +1,104 @@
+@charset "utf-8";
+*{
+    box-sizing: border-box;
+}
+.bg-light {
+    background-color: #ffffff !important;
+}
+.bg-white{
+    background-color: white;
+}
+.text-white
+{
+    color:white
+}
+.bod{
+    border: 1px solid red;
+}
+body{
+    background-color: #F0F1F3;
+}
+#student_header div{
+    box-shadow: 0 16px 30px -12px rgba(0,0,0,.2), 0 4px 25px 0 rgba(0,0,0,.12), 0 8px 10px -5px rgba(0,0,0,.2);
+    background-color: white;
+}
+/*notice board and alert coding & idea box*/
+#notice_board_container{
+    box-shadow:0 16px 30px -12px rgba(0,0,0,.2), 0 4px 25px 0 rgba(0,0,0,.12), 0 8px 10px -5px rgba(0,0,0,.2);
+    overflow: scroll;
+    overflow-x: hidden;
+}
+#alert_box_container,#idea_box_container{
+    box-shadow:0 16px 30px -12px rgba(0,0,0,.2), 0 4px 25px 0 rgba(0,0,0,.12), 0 8px 10px -5px rgba(0,0,0,.2);  
+}
+#notice_board_head,#alert_box_head{
+    box-shadow: 0px 1px 10px 0px rgba(0, 0, 0, 0.1);
+    z-index: inherit;
+    color:red;
+}
+/*calender & patent & download */
+#patent_box_container,#calender_box_container,#download_section_container{
+    box-shadow:0 16px 30px -12px rgba(0,0,0,.2), 0 4px 25px 0 rgba(0,0,0,.12), 0 8px 10px -5px rgba(0,0,0,.2);    
+}
+textarea::placeholder{
+    text-align: center;
+    font-family: fontAwesome;
+    font-size:150px;
+    color: gray;
+}
+.months{
+    width: 100%;
+    display:flex;
+    justify-content: space-around;
+    align-items: center;
+    color:white;
+   background-color:green;
+}
+.prev,.next{
+    width: 40px;
+    height:40px;
+    background-color:#ccc;
+    border-radius:50%;
+    color:white;
+    display: flex;
+    font-size:30px;
+    justify-content: center;
+    align-items: center;
+}
+.next:hover{
+    background-color: black;
+    cursor: pointer;
+}
+.prev:hover{
+    background-color:black;
+    cursor: pointer;
+}
+.weeks{
+    width: 100%;
+    display:flex;
+    justify-content: space-around;
+    align-items: center;
+    color:white;
+   background-color:rgb(117, 192, 4);
+}
+.days{
+    display: flex;
+    flex-wrap: wrap;
+    text-align:center;
+}
+.days div{
+    width: 14.28%;
+    padding:7px;
+    transition: all .4s;
+}
+.days div:hover{
+background-color:#ddd;
+cursor: pointer;
+}
+.next_m_days{
+    color:#ddd;
+}
+.active{
+    background-color:blue;
+    color: white;
+}
